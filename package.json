@@ -1,0 +1,23 @@
+{
+  "name": "team-profile-generator-with-object-oriented-programming",
+  "version": "1.0.0",
+  "description": "## Your Task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jojonah1812/Team-Profile-Generator-with-Object-Oriented-Programming.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jojonah1812/Team-Profile-Generator-with-Object-Oriented-Programming/issues"
+  },
+  "homepage": "https://github.com/jojonah1812/Team-Profile-Generator-with-Object-Oriented-Programming#readme",
+  "dependencies": {
+    "inquirer": "^8.1.0",
+    "jest": "^27.0.4"
+  }
+}
