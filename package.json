@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/jojonah1812/Team-Profile-Generator-with-Object-Oriented-Programming#readme",
   "dependencies": {
-    "inquirer": "^8.1.0",
+    "inquirer": "^8.1.0"
+  },
+  "devDependencies": {
     "jest": "^27.0.4"
   }
 }
