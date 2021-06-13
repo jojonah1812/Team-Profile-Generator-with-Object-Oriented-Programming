@@ -7,6 +7,7 @@ const generateHTML = (answers) =>
 
 
 inquirer
+///Team Manager
   .prompt([
     {
       type: 'input',
@@ -28,26 +29,42 @@ inquirer
       message: 'Office #?',
       name: 'office',
     },
-    // {
-    //   type: 'input',
-    //   message: 'What is the title of your new project?',
-    //   name: 'title',
-    // },
-    // {
-    //   type: 'input',
-    //   message: 'Please provide a description of your project.',
-    //   name: 'description',
-    // },
-    // {
-    //   type: 'input',
-    //   message: 'Please provide instructions for someone to install the necessary programs to run your project.',
-    //   name: 'installation',
-    // },
-    // {
-    //   type: 'input',
-    //   message: 'Please provide explain how the project is intended to be used.',
-    //   name: 'usage',
-    // },
+    ])
+///Engineer
+    .prompt([
+        {
+          type: 'input',
+          message: 'Engineers Name?',
+          name: 'engineer',
+        },
+        {
+          type: 'input',
+          message: 'Employee ID?',
+          name: 'eEmployeeID',
+        },
+        {
+          type: 'input',
+          message: 'Email Address?',
+          name: 'eEmailAddress',
+        },
+        {
+          type: 'input',
+          message: 'GitHub Username?',
+          name: 'eGitHUbUsername',
+        },
+        ])
+
+
+
+
+
+
+
+
+
+
+
+
     // {
     //   type: 'confirm',
     //   message: 'Would you like to allow other developers to contribute to your project? Contributor Covenant',
@@ -75,4 +92,4 @@ inquirer
     //             "Open"
     //   ]
     // },
-   ])
+   
