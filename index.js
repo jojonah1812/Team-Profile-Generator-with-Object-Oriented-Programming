@@ -1,8 +1,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const TeamManager=require("./lib/Manager.js");
+const Engineer=require("./lib/Engineer.js");
+const Intern=require("./lib/Intern.js");
 
-//array ready to receive info we wanty t push to it.
+//array ready to receive info we want to push to it.
 const teamAnswers = []
 
 function managerFunction () {
@@ -35,61 +37,74 @@ inquirer
     teamAnswers.push(Manager);
     continue()
   }
-  
   )
 }    
-    
 managerFunction()    
     
- 
+
 
 //   ///Engineer
-//     .prompt([
-//         {
-//           type: 'input',
-//           message: 'Engineers Name?',
-//           name: 'engineer',
-//         },
-//         {
-//           type: 'input',
-//           message: 'Employee ID?',
-//           name: 'eEmployeeID',
-//         },
-//         {
-//           type: 'input',
-//           message: 'Email Address?',
-//           name: 'eEmailAddress',
-//         },
-//         {
-//           type: 'input',
-//           message: 'GitHub Username?',
-//           name: 'eGitHUbUsername',
-//         },
-//         ])
 
-//   ///Intern
-// .prompt([
-//     {
-//       type: 'input',
-//       message: 'EInterns Name?',
-//       name: 'engineer',
-//     },
-//     {
-//       type: 'input',
-//       message: 'Employee ID?',
-//       name: 'eEmployeeID',
-//     },
-//     {
-//       type: 'input',
-//       message: 'Email Address?',
-//       name: 'eEmailAddress',
-//     },
-//     {
-//       type: 'input',
-//       message: 'school?',
-//       name: 'school',
-//     },
-//     ])
+function engineerFunction () {
+
+  inquirer
+
+    .prompt([
+        {
+          type: 'input',
+          message: 'Engineers Name?',
+          name: 'engineer',
+        },
+        {
+          type: 'input',
+          message: 'Employee ID?',
+          name: 'eEmployeeID',
+        },
+        {
+          type: 'input',
+          message: 'Email Address?',
+          name: 'eEmailAddress',
+        },
+        {
+          type: 'input',
+          message: 'GitHub Username?',
+          name: 'eGitHUbUsername',
+        },
+      ])
+  }
+engineerFunction ()
+
+
+  ///Intern
+
+function internFunction () {
+
+  inquirer
+    .prompt([
+        {
+          type: 'input',
+          message: 'EInterns Name?',
+          name: 'engineer',
+        },
+        {
+          type: 'input',
+          message: 'Employee ID?',
+          name: 'eEmployeeID',
+        },
+        {
+          type: 'input',
+          message: 'Email Address?',
+          name: 'eEmailAddress',
+        },
+        {
+          type: 'input',
+          message: 'school?',
+          name: 'school',
+        },
+     ])
+  }
+
+internFunction ()
 
 
 // //PROMISE  (mini project 6/7 2:30)
@@ -105,7 +120,7 @@ managerFunction()
 
 
 
-////////this next to ask a nd call funcs
+////////this next to ask and call funcs
 //       {
 //         type: 'list',
 //         message: 'Are there other employees you need to add?',
