@@ -31,80 +31,125 @@ inquirer
       message: 'Office #?',
       name: 'office',
     },
-  ]).then((managerAnswers)=>{
-    console.log(managerAnswers)
-    const Manager = new TeamManager(managerAnswers.teamManager, managerAnswers.employeeID, managerAnswers.emailAddress, managerAnswers.office)
+  ])
+  .then((answers)=>{
+      // take inputs of person//
+    const Manager = new TeamManager(answers.teamManager, answers.employeeID, answers.emailAddress, answers.office)
+      // add manager to team //
     teamAnswers.push(Manager);
-    continue()
-  }
-  )
+      // run function to add next person //
+    nextTeamMember()
+  });
 }    
 managerFunction()    
     
 
+const nextTeamMember = () => {
+    return inquirer
+      .prompt ([
+        {
+          type: 'list',
+          message: 'Are there other employees you need to add?',
+          name: 'otherEmployees',
+          choices: ["Engineer", "Intern", "My team is complete."]
+        }
+      ])
+
+      .then((answers))
+        if (answers.choices === 'Engineer') {
+          askEngineer();
+        } else if
+          (answers.choices === 'Intern') {
+          askIntern();
+        } else {
+          createTeam();
+        }
+}
+
+
+
+
+
+
+// if engineer call engineerFunction
+// if engineer call engineerFunction
+// if complete, call funcxtion to write HTML
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //   ///Engineer
 
-function engineerFunction () {
+// function engineerFunction () {
 
-  inquirer
+//   inquirer
 
-    .prompt([
-        {
-          type: 'input',
-          message: 'Engineers Name?',
-          name: 'engineer',
-        },
-        {
-          type: 'input',
-          message: 'Employee ID?',
-          name: 'eEmployeeID',
-        },
-        {
-          type: 'input',
-          message: 'Email Address?',
-          name: 'eEmailAddress',
-        },
-        {
-          type: 'input',
-          message: 'GitHub Username?',
-          name: 'eGitHUbUsername',
-        },
-      ])
-  }
-engineerFunction ()
+//     .prompt([
+//         {
+//           type: 'input',
+//           message: 'Engineers Name?',
+//           name: 'engineer',
+//         },
+//         {
+//           type: 'input',
+//           message: 'Employee ID?',
+//           name: 'eEmployeeID',
+//         },
+//         {
+//           type: 'input',
+//           message: 'Email Address?',
+//           name: 'eEmailAddress',
+//         },
+//         {
+//           type: 'input',
+//           message: 'GitHub Username?',
+//           name: 'eGitHUbUsername',
+//         },
+//       ])
+//   }
+// engineerFunction ()
 
 
-  ///Intern
+//   ///Intern
 
-function internFunction () {
+// function internFunction () {
 
-  inquirer
-    .prompt([
-        {
-          type: 'input',
-          message: 'EInterns Name?',
-          name: 'engineer',
-        },
-        {
-          type: 'input',
-          message: 'Employee ID?',
-          name: 'eEmployeeID',
-        },
-        {
-          type: 'input',
-          message: 'Email Address?',
-          name: 'eEmailAddress',
-        },
-        {
-          type: 'input',
-          message: 'school?',
-          name: 'school',
-        },
-     ])
-  }
+//   inquirer
+//     .prompt([
+//         {
+//           type: 'input',
+//           message: 'EInterns Name?',
+//           name: 'engineer',
+//         },
+//         {
+//           type: 'input',
+//           message: 'Employee ID?',
+//           name: 'eEmployeeID',
+//         },
+//         {
+//           type: 'input',
+//           message: 'Email Address?',
+//           name: 'eEmailAddress',
+//         },
+//         {
+//           type: 'input',
+//           message: 'school?',
+//           name: 'school',
+//         },
+//      ])
+//   }
 
-internFunction ()
+// internFunction ()
 
 
 // //PROMISE  (mini project 6/7 2:30)
@@ -120,18 +165,11 @@ internFunction ()
 
 
 
-////////this next to ask and call funcs
-//       {
-//         type: 'list',
-//         message: 'Are there other employees you need to add?',
-//         name: 'otherEmployees',
-//         choices: ["Engineer", "Intern", "My team is complete."]
-//       }
 
 
 
-
-
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 // const generateHTML = (answers) =>
 //   `<!DOCTYPE html>
 // <html lang="en">
@@ -156,9 +194,4 @@ internFunction ()
 // </div>
 // </body>
 // </html>`;
-
-
-
-
-
 
