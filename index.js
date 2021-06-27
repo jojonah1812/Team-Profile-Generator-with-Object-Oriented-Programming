@@ -4,6 +4,7 @@ const TeamManager=require("./lib/Manager.js");
 const Engineer=require("./lib/Engineer.js");
 const Intern=require("./lib/Intern.js");
 
+
 //array ready to receive info we want to push to it.
 const teamAnswers = []
 
@@ -71,85 +72,96 @@ const nextTeamMember = () => {
 
 
 
-// if engineer call engineerFunction
-// if engineer call engineerFunction
-// if complete, call funcxtion to write HTML
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 //   ///Engineer
 
-// function engineerFunction () {
+function engineerFunction () {
 
-//   inquirer
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      message: 'Engineers Name?',
+      name: 'engineer',
+    },
+    {
+      type: 'input',
+      message: 'Employee ID?',
+      name: 'eEmployeeID',
+    },
+    {
+      type: 'input',
+      message: 'Email Address?',
+      name: 'eEmailAddress',
+    },
+    {
+      type: 'input',
+      message: 'GitHub Username?',
+      name: 'eGitHUbUsername',
+    },
+  ])
+  .then((answers)=>{
+      // take inputs of person//
+    const Engineer = new Engineer (answers.Engineer, answers.employeeID, answers.emailAddress, answers.office)
+      // add engineer to team //
+    teamAnswers.push(Engineer);
+      // run function to add next person //
+  nextTeamMember()
+  });
+}
+engineerFunction ()
 
-//     .prompt([
-//         {
-//           type: 'input',
-//           message: 'Engineers Name?',
-//           name: 'engineer',
-//         },
-//         {
-//           type: 'input',
-//           message: 'Employee ID?',
-//           name: 'eEmployeeID',
-//         },
-//         {
-//           type: 'input',
-//           message: 'Email Address?',
-//           name: 'eEmailAddress',
-//         },
-//         {
-//           type: 'input',
-//           message: 'GitHub Username?',
-//           name: 'eGitHUbUsername',
-//         },
-//       ])
-//   }
-// engineerFunction ()
+
 
 
 //   ///Intern
 
-// function internFunction () {
+function internFunction () {
 
-//   inquirer
-//     .prompt([
-//         {
-//           type: 'input',
-//           message: 'EInterns Name?',
-//           name: 'engineer',
-//         },
-//         {
-//           type: 'input',
-//           message: 'Employee ID?',
-//           name: 'eEmployeeID',
-//         },
-//         {
-//           type: 'input',
-//           message: 'Email Address?',
-//           name: 'eEmailAddress',
-//         },
-//         {
-//           type: 'input',
-//           message: 'school?',
-//           name: 'school',
-//         },
-//      ])
-//   }
+inquirer
+  .prompt([
+      {
+        type: 'input',
+        message: 'EInterns Name?',
+        name: 'engineer',
+      },
+      {
+        type: 'input',
+        message: 'Employee ID?',
+        name: 'eEmployeeID',
+      },
+      {
+        type: 'input',
+        message: 'Email Address?',
+        name: 'eEmailAddress',
+      },
+      {
+        type: 'input',
+        message: 'school?',
+        name: 'school',
+      },
+    ])
+    .then((answers)=>{
+      // take inputs of person//
+    const Intern = new Intern(answers.Intern, answers.employeeID, answers.emailAddress, answers.office)
+      // add intern to team //
+    teamAnswers.push(Intern);
+      // run function to add next person //
+    nextTeamMember()
+  });
+}    
 
-// internFunction ()
+internFunction ()
+
+
+
+
+
+
+
 
 
 // //PROMISE  (mini project 6/7 2:30)
@@ -194,4 +206,3 @@ const nextTeamMember = () => {
 // </div>
 // </body>
 // </html>`;
-
