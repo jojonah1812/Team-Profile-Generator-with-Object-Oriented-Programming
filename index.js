@@ -63,14 +63,13 @@ const nextTeamMember = () => {
           (answers.choices === 'Intern') {
           askIntern();
         } else {
-          createTeam();
+            const htmlPageContent = generateHTML(answers);
+      
+            fs.writeFile('index.html', htmlPageContent, (err) =>
+              err ? console.log(err) : console.log('Success! You created the index.html!')
+            );
         }
 }
-
-
-
-
-
 
 
 
@@ -125,7 +124,7 @@ inquirer
   .prompt([
       {
         type: 'input',
-        message: 'EInterns Name?',
+        message: 'Interns Name?',
         name: 'engineer',
       },
       {
@@ -164,45 +163,43 @@ internFunction ()
 
 
 
+//.  GENERATE HTML //
+const generateHTML = (answers) =>
+`<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Jonah's Team</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        ${addEmployeeCard(teamAnswers)}
+      </div>
+    </div>
+  </body>
+  </html>`
+
+  fs.writeFile('./index.html', html, function(err) {
+    if (err) {
+        console.log(err);
+    }
+  })
+
+
+
+
+
+
+  
+
 // //PROMISE  (mini project 6/7 2:30)
-//     .then((answers) => {
-//         const htmlPageContent = generateHTML(answers);
+    .then((answers) => {
+        const htmlPageContent = generateHTML(answers);
     
-//         fs.writeFile('index.html', htmlPageContent, (err) =>
-//           err ? console.log(err) : console.log('Success!You created the index.html!')
-//         );
-//       });
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-// const generateHTML = (answers) =>
-//   `<!DOCTYPE html>
-// <html lang="en">
-// <head>
-//   <meta charset="UTF-8">
-//   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-//   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-//   <title>Team Generator</title>
-// </head>
-
-// <body>
-//   <div class="jumbotron jumbotron-fluid">
-//   <div class="container">
-//     <h1 class="display-4">Hi! My name is ${answers.name}</h1>
-//     <p class="lead">I am from ${answers.location}.</p>
-//     <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
-//     <ul class="list-group">
-//       <li class="list-group-item">My GitHub username is ${answers.github}</li>
-//       <li class="list-group-item">LinkedIn: ${answers.linkedin}</li>
-//     </ul>
-//   </div>
-// </div>
-// </body>
-// </html>`;
+        fs.writeFile('index.html', htmlPageContent, (err) =>
+          err ? console.log(err) : console.log('Success! You created the index.html!')
+        );
+      });
