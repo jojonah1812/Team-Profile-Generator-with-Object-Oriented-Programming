@@ -15,7 +15,7 @@ inquirer
     {
       type: 'input',
       message: 'Team Managers Name?',
-      name: 'teamManager',
+      name: 'name',
     },
     {
       type: 'input',
@@ -42,8 +42,8 @@ inquirer
     nextTeamMember()
   });
 }    
-managerFunction()    
-    
+
+
 
 const nextTeamMember = () => {
     return inquirer
@@ -56,11 +56,13 @@ const nextTeamMember = () => {
         }
       ])
 
+
+
       .then((answers))
-        if (answers.choices === 'Engineer') {
+        if (answers.otherEmployees === 'Engineer') {
           engineerFunction();
         } else if
-          (answers.choices === 'Intern') {
+          (answers.otherEmployees === 'Intern') {
           internFunction();
         } else {
             const htmlPageContent = generateHTML(answers);
@@ -73,8 +75,6 @@ const nextTeamMember = () => {
 
 
 
-
-
 //   ///Engineer
 
 function engineerFunction () {
@@ -84,34 +84,34 @@ inquirer
     {
       type: 'input',
       message: 'Engineers Name?',
-      name: 'engineer',
+      name: 'name',
     },
     {
       type: 'input',
       message: 'Employee ID?',
-      name: 'eEmployeeID',
+      name: 'id',
     },
     {
       type: 'input',
       message: 'Email Address?',
-      name: 'eEmailAddress',
+      name: 'emailAddress',
     },
     {
       type: 'input',
       message: 'GitHub Username?',
-      name: 'eGitHUbUsername',
+      name: 'gitHubUsername',
     },
   ])
   .then((answers)=>{
       // take inputs of person//
-    const Engineer = new Engineer (answers.Engineer, answers.employeeID, answers.emailAddress, answers.office)
+    const Engineer = new Engineer (answers.engineerName, answers.employeeID, answers.emailAddress, answers.gitHubUsername)
       // add engineer to team //
     teamAnswers.push(Engineer);
       // run function to add next person //
-  nextTeamMember()
-  });
+  nextTeamMember();
+  })
 }
-// engineerFunction ()
+
 
 
 
@@ -125,17 +125,17 @@ inquirer
       {
         type: 'input',
         message: 'Interns Name?',
-        name: 'engineer',
+        name: 'name',
       },
       {
         type: 'input',
         message: 'Employee ID?',
-        name: 'eEmployeeID',
+        name: 'employeeID',
       },
       {
         type: 'input',
         message: 'Email Address?',
-        name: 'eEmailAddress',
+        name: 'emailAddress',
       },
       {
         type: 'input',
@@ -145,40 +145,39 @@ inquirer
     ])
     .then((answers)=>{
       // take inputs of person//
-    const Intern = new Intern(answers.Intern, answers.employeeID, answers.emailAddress, answers.office)
+    const Intern = new Intern(answers.name, answers.employeeID, answers.emailAddress, answers.school)
       // add intern to team //
     teamAnswers.push(Intern);
       // run function to add next person //
-    nextTeamMember()
-  });
+    nextTeamMember();
+  })
 }    
 
-// internFunction ()
+managerFunction ();
 
 
 
+// //.  GENERATE HTML //
+// const generateHTML = (answers) =>
+// `<!DOCTYPE html>
+//   <html lang="en">
+//   <head>
+//       <meta charset="UTF-8">
+//       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//       <title>Jonah's Team</title>
+//   </head>
+//   <body>
+//     <div class="container">
+//       <div class="row">
+//         ${addEmployeeCard(teamAnswers)}
+//       </div>
+//     </div>
+//   </body>
+//   </html>`
 
-//.  GENERATE HTML //
-const generateHTML = (answers) =>
-`<!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Jonah's Team</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        ${addEmployeeCard(teamAnswers)}
-      </div>
-    </div>
-  </body>
-  </html>`
-
-  fs.writeFile('./index.html', html, function(err) {
-    if (err) {
-        console.log(err);
-    }
-  })
+  // fs.writeFile('./index.html', html, function(err) {
+  //   if (err) {
+  //       console.log(err);
+  //   }
+  // })
