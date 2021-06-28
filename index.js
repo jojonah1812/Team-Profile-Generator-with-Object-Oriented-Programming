@@ -35,7 +35,7 @@ inquirer
   ])
   .then((answers)=>{
       // take inputs of person//
-    const Manager = new TeamManager(answers.teamManager, answers.employeeID, answers.emailAddress, answers.office)
+    const Manager = new TeamManager(answers.teamManager, answers.employeeID, answers.emailAddress, answers.office);
       // add manager to team //
     teamAnswers.push(Manager);
       // run function to add next person //
@@ -58,10 +58,10 @@ const nextTeamMember = () => {
 
       .then((answers))
         if (answers.choices === 'Engineer') {
-          askEngineer();
+          engineerFunction();
         } else if
           (answers.choices === 'Intern') {
-          askIntern();
+          internFunction();
         } else {
             const htmlPageContent = generateHTML(answers);
       
@@ -111,7 +111,7 @@ inquirer
   nextTeamMember()
   });
 }
-engineerFunction ()
+// engineerFunction ()
 
 
 
@@ -153,12 +153,7 @@ inquirer
   });
 }    
 
-internFunction ()
-
-
-
-
-
+// internFunction ()
 
 
 
@@ -187,19 +182,3 @@ const generateHTML = (answers) =>
         console.log(err);
     }
   })
-
-
-
-
-
-
-  
-
-// //PROMISE  (mini project 6/7 2:30)
-    .then((answers) => {
-        const htmlPageContent = generateHTML(answers);
-    
-        fs.writeFile('index.html', htmlPageContent, (err) =>
-          err ? console.log(err) : console.log('Success! You created the index.html!')
-        );
-      });
