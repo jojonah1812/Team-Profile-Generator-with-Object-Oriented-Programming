@@ -20,12 +20,12 @@ inquirer
     {
       type: 'input',
       message: 'Employee ID?',
-      name: 'employeeID',
+      name: 'id',
     },
     {
       type: 'input',
       message: 'Email Address?',
-      name: 'emailAddress',
+      name: 'email',
     },
     {
       type: 'input',
@@ -35,7 +35,7 @@ inquirer
   ])
   .then((answers)=>{
       // take inputs of person//
-    const Manager = new TeamManager(answers.teamManager, answers.employeeID, answers.emailAddress, answers.office);
+    const Manager = new TeamManager(answers.name, answers.id, answers.email, answers.office);
       // add manager to team //
     teamAnswers.push(Manager);
       // run function to add next person //
@@ -45,8 +45,8 @@ inquirer
 
 
 
-const nextTeamMember = () => {
-    return inquirer
+function nextTeamMember() {
+    inquirer
       .prompt ([
         {
           type: 'list',
@@ -94,7 +94,7 @@ inquirer
     {
       type: 'input',
       message: 'Email Address?',
-      name: 'emailAddress',
+      name: 'email',
     },
     {
       type: 'input',
@@ -104,16 +104,13 @@ inquirer
   ])
   .then((answers)=>{
       // take inputs of person//
-    const Engineer = new Engineer (answers.engineerName, answers.employeeID, answers.emailAddress, answers.gitHubUsername)
+    const Engineer = new Engineer (answers.name, answers.id, answers.email, answers.gitHubUsername)
       // add engineer to team //
     teamAnswers.push(Engineer);
       // run function to add next person //
   nextTeamMember();
   })
 }
-
-
-
 
 
 //   ///Intern
@@ -130,12 +127,12 @@ inquirer
       {
         type: 'input',
         message: 'Employee ID?',
-        name: 'employeeID',
+        name: 'id',
       },
       {
         type: 'input',
         message: 'Email Address?',
-        name: 'emailAddress',
+        name: 'email',
       },
       {
         type: 'input',
@@ -145,7 +142,7 @@ inquirer
     ])
     .then((answers)=>{
       // take inputs of person//
-    const Intern = new Intern(answers.name, answers.employeeID, answers.emailAddress, answers.school)
+    const Intern = new Intern(answers.name, answers.id, answers.email, answers.school)
       // add intern to team //
     teamAnswers.push(Intern);
       // run function to add next person //
@@ -175,9 +172,3 @@ managerFunction ();
 //     </div>
 //   </body>
 //   </html>`
-
-  // fs.writeFile('./index.html', html, function(err) {
-  //   if (err) {
-  //       console.log(err);
-  //   }
-  // })
