@@ -44,7 +44,6 @@ inquirer
 }    
 
 
-
 function nextTeamMember() {
     inquirer
       .prompt ([
@@ -55,10 +54,7 @@ function nextTeamMember() {
           choices: ["Engineer", "Intern", "My team is complete."]
         }
       ])
-
-
-
-      .then((answers))
+      .then((answers) => {
         if (answers.otherEmployees === 'Engineer') {
           engineerFunction();
         } else if
@@ -71,9 +67,9 @@ function nextTeamMember() {
               err ? console.log(err) : console.log('Success! You created the index.html!')
             );
         }
+      
+})
 }
-
-
 
 //   ///Engineer
 
@@ -104,9 +100,9 @@ inquirer
   ])
   .then((answers)=>{
       // take inputs of person//
-    const Engineer = new Engineer (answers.name, answers.id, answers.email, answers.gitHubUsername)
+    const engineer = new Engineer (answers.name, answers.id, answers.email, answers.gitHubUsername)
       // add engineer to team //
-    teamAnswers.push(Engineer);
+    teamAnswers.push(engineer);
       // run function to add next person //
   nextTeamMember();
   })
@@ -141,13 +137,13 @@ inquirer
       },
     ])
     .then((answers)=>{
-      // take inputs of person//
-    const Intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-      // add intern to team //
-    teamAnswers.push(Intern);
-      // run function to add next person //
-    nextTeamMember();
-  })
+          // take inputs of person//
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+          // add intern to team //
+        teamAnswers.push(intern);
+          // run function to add next person //
+        nextTeamMember();
+    })
 }    
 
 managerFunction ();
