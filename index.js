@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const TeamManager=require("./lib/Manager.js");
+const Manager=require("./lib/Manager.js");
 const Engineer=require("./lib/Engineer.js");
 const Intern=require("./lib/Intern.js");
 // const Employee=require('/lib/Employee.js');
@@ -20,25 +20,25 @@ inquirer
     },
     {
       type: 'input',
-      message: 'Employee ID?',
+      message: 'Manager Employee ID?',
       name: 'id',
     },
     {
       type: 'input',
-      message: 'Email Address?',
+      message: 'Manager Email Address?',
       name: 'email',
     },
     {
       type: 'input',
-      message: 'Office #?',
+      message: 'Manager Office #?',
       name: 'office',
     },
   ])
   .then((answers)=>{
       // take inputs of person//
-    const Manager = new TeamManager(answers.name, answers.id, answers.email, answers.office);
+    const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
       // add manager to team //
-    teamAnswers.push(Manager);
+    teamAnswers.push(manager);
       // run function to add next person //
     nextTeamMember()
   });
@@ -63,8 +63,7 @@ function nextTeamMember() {
           (answers.otherEmployees === 'Intern') {
           internFunction();
         } else {
-            console.log(teamAnswers);
-            const generateHTML = teamHTML(teamAnswers);
+            const generateHTML = teamHTML(answers);
       
             fs.writeFile('index.html', generateHTML, (err) =>
              err ? console.log(err) : console.log('Success! You created the index.html!')
@@ -149,7 +148,6 @@ inquirer
     })
 }    
 
-managerFunction ();
 
 const teamHTML = (teamAnswers) =>
 `<!DOCTYPE html>
@@ -166,89 +164,22 @@ const teamHTML = (teamAnswers) =>
       <div class="row">
 
           <div>
-            <h2> ${teamAnswers[0].name}</h2>
+            // <h2> (MANAGER NAME HERE) </h2>
             <h4>Team Manager</h4>
             <ul>
-                <li> Employee ID#${teamAnswers[0].id}</li>
-                <li> Office # 9 </li>
-                <li> Gjay@redding.com </li>
+                <li> Employee ID# (Manager ID HERE)</li>
+                <li> (MANAGER EMAIL HERE) </li>
+                <li> Office # (MANAGER OFFICE # HERE) </li>
             </ul>
           </div>
-        
-          <div>
-            <h2> Phylis Jenkins </h2>
-            <h4>Engineer</h4>
-            <ul>
-                <li> Engineer </li>
-                <li> Employee ID#298 </li>
-                <li> Pjenkins@redding.com </li>
-                <li> Jenie212 </li>
-            </ul>
-          </div>
-        
-          <div>
-            <h2> Rupret Flores </h2>
-            <h4>Intern</h4>
-            <ul>
-                <li> Employee ID# I12 </li>
-                <li> Rflores@redding.com </li>
-                <li> Georgia Tech </li>
-            </ul>
-          </div>
-        
       </div>
     </div>
+
+REPEAT FOR OTHER ROLES, BUT WHAT IT MORE THAN 1 ENGINEER?
+
+
 <body>
 </html>`
 
-// DONE WITH CHRISTIAN  
-// //.  GENERATE HTML //
-// const teamHTML = (teamAnswers) =>
-// `<!DOCTYPE html>
-// <html lang="en">
-// <head>
-//   <meta charset="UTF-8">
-//   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-//   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-//   <title>Team Redding</title>
-// </head>
-// <body> 
-//     <h1>Team Redding</h1>
-//     <div class="container">
-//       <div class="row">
+managerFunction ();
 
-//           <div>
-//             <h2> ${teamAnswers[0].name}</h2>
-//             <h4>Team Manager</h4>
-//             <ul>
-//                 <li> Employee ID#${teamAnswers[0].id}</li>
-//                 <li> Office # 9 </li>
-//                 <li> Gjay@redding.com </li>
-//             </ul>
-//           </div>
-        
-//           <div>
-//             <h2> Phylis Jenkins </h2>
-//             <h4>Engineer</h4>
-//             <ul>
-//                 <li> Engineer </li>
-//                 <li> Employee ID#298 </li>
-//                 <li> Pjenkins@redding.com </li>
-//                 <li> Jenie212 </li>
-//             </ul>
-//           </div>
-        
-//           <div>
-//             <h2> Rupret Flores </h2>
-//             <h4>Intern</h4>
-//             <ul>
-//                 <li> Employee ID# I12 </li>
-//                 <li> Rflores@redding.com </li>
-//                 <li> Georgia Tech </li>
-//             </ul>
-//           </div>
-        
-//       </div>
-//     </div>
-// <body>
-// </html>`
