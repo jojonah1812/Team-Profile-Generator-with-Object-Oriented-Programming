@@ -3,14 +3,13 @@ const fs = require('fs');
 const Manager=require("./lib/Manager.js");
 const Engineer=require("./lib/Engineer.js");
 const Intern=require("./lib/Intern.js");
-// const Employee=require('/lib/Employee.js');
 
 
 //array ready to receive info we want to push to it.
 const teamAnswers = []
 
+///////////   MANAGER   //////////////////////
 function managerFunction () {
-
 inquirer
   .prompt([
     {
@@ -44,7 +43,7 @@ inquirer
   });
 }    
 
-
+///////////   NEXT   //////////////////////
 function nextTeamMember() {
     inquirer
       .prompt ([
@@ -64,62 +63,22 @@ function nextTeamMember() {
           internFunction();
         } else {
             const generateHTML = teamHTML(answers);
-      
+            console.log(teamAnswers);
             fs.writeFile('index.html', generateHTML, (err) =>
-             err ? console.log(err) : console.log('Success! You created the index.html!')
-            );
+             err ? console.log(err) : console.log('Success! You created the index.html!'));
         }
-      
-  })
-}
+      })
+ }
 
-//   ///Engineer
+///////////   ENGINEER   //////////////////////
 
 function engineerFunction () {
 
-inquirer
-  .prompt([
-    {
-      type: 'input',
-      message: 'Engineers Name?',
-      name: 'name',
-    },
-    {
-      type: 'input',
-      message: 'Employee ID?',
-      name: 'id',
-    },
-    {
-      type: 'input',
-      message: 'Email Address?',
-      name: 'email',
-    },
-    {
-      type: 'input',
-      message: 'GitHub Username?',
-      name: 'gitHubUsername',
-    },
-  ])
-  .then((answers)=>{
-      // take inputs of person//
-    const engineer = new Engineer (answers.name, answers.id, answers.email, answers.gitHubUsername)
-      // add engineer to team //
-    teamAnswers.push(engineer);
-      // run function to add next person //
-  nextTeamMember();
-  })
-}
-
-
-//   ///Intern
-
-function internFunction () {
-
-inquirer
-  .prompt([
+  inquirer
+    .prompt([
       {
         type: 'input',
-        message: 'Interns Name?',
+        message: 'Engineers Name?',
         name: 'name',
       },
       {
@@ -134,18 +93,55 @@ inquirer
       },
       {
         type: 'input',
-        message: 'school?',
-        name: 'school',
+        message: 'GitHub Username?',
+        name: 'gitHubUsername',
       },
     ])
     .then((answers)=>{
-          // take inputs of person//
-        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-          // add intern to team //
-        teamAnswers.push(intern);
-          // run function to add next person //
-        nextTeamMember();
+        // take inputs of person//
+      const engineer = new Engineer (answers.name, answers.id, answers.email, answers.gitHubUsername)
+        // add engineer to team //
+      teamAnswers.push(engineer);
+        // run function to add next person //
+    nextTeamMember();
     })
+}
+
+
+///////////   Intern   //////////////////////
+function internFunction () {
+
+  inquirer
+    .prompt([
+        {
+          type: 'input',
+          message: 'Interns Name?',
+          name: 'name',
+        },
+        {
+          type: 'input',
+          message: 'Employee ID?',
+          name: 'id',
+        },
+        {
+          type: 'input',
+          message: 'Email Address?',
+          name: 'email',
+        },
+        {
+          type: 'input',
+          message: 'school?',
+          name: 'school',
+        },
+      ])
+      .then((answers)=>{
+            // take inputs of person//
+          const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+            // add intern to team //
+          teamAnswers.push(intern);
+            // run function to add next person //
+          nextTeamMember();
+      })
 }    
 
 
@@ -164,7 +160,7 @@ const teamHTML = (teamAnswers) =>
       <div class="row">
 
           <div>
-            // <h2> (MANAGER NAME HERE) </h2>
+            // <h2>(MANAGER NAME HERE) </h2>
             <h4>Team Manager</h4>
             <ul>
                 <li> Employee ID# (Manager ID HERE)</li>
@@ -182,4 +178,3 @@ REPEAT FOR OTHER ROLES, BUT WHAT IT MORE THAN 1 ENGINEER?
 </html>`
 
 managerFunction ();
-
