@@ -194,12 +194,11 @@ function addEmployeeCard(allEmployeesArray){
       employeeCard += `
         <section class="card">
           <h2> ${employee.getRole()} </h2>
+          <h3> ${employee.name} </h3>
           <ul>
-              <li> ${employee.name} </li>
               <li> Employee ID #${employee.id} </li>
               <li> ${roleInfo(employee)} </li>
-              <li> ${employee.email} </li>
-              
+              <li> <a href = "mailto:${employee.email}">${employee.email}<br><img src = "./assets/emailIcon.jpg" /></a> </li>
           </ul>
         </div>
       `
