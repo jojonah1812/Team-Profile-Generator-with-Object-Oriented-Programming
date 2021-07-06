@@ -15,7 +15,6 @@
   
   .main-header {
     display: flex;
-    /* Defines how to distribute the empty space between child elements */
     max-width: 1000px;
     justify-content: space-between;
     padding: 40px;
@@ -24,8 +23,6 @@
   }
   
   .card {
-    /* A flex-basis of 200px sets the starting width */
-    /* A flex-grow value of 1 allows the elements to evenly grow to fill the remaining space */
     flex: 1 0 200px;
     max-width:333px;
     padding: 7px;
@@ -35,7 +32,7 @@
   }
   
   .card header {
-    padding: 20px;
+    padding: 10px;
     background: #13293d;
     color: #fff;
   }

@@ -184,17 +184,13 @@ function startHTML () {
 }
 
 
-
-
-
-
 function addEmployeeCard(allEmployeesArray){
     let employeeCard = ``;
     allEmployeesArray.forEach(employee => {
       employeeCard += `
         <section class="card">
           <h2> ${employee.getRole()} </h2>
-          <h3> ${employee.name} </h3>
+          <h2> ${employee.name} </h2>
           <ul>
               <li> Employee ID #${employee.id} </li>
               <li> ${roleInfo(employee)} </li>
@@ -204,9 +200,7 @@ function addEmployeeCard(allEmployeesArray){
       `
     })
     console.log(employeeCard);
-    
     return employeeCard
-        
  }
 
 function roleInfo(employee){
