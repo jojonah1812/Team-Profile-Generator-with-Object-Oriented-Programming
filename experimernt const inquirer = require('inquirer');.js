@@ -153,31 +153,38 @@ function internFunction () {
 function startHTML () {
   const html = `<!DOCTYPE html>
   <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Henry's Team</title>
-  </head>
-  <body> 
-  <div class="container">
-  <div class="row">
-  ${addEmployeeCard(allEmployees)}
-  </div>
-  </div>
-  <body>
-  </html>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+      <title>Team Redding</title>
+    </head>
 
-  `;
+    <body> 
+      <header class="main-header">
+        <h1>Team Redding</h1>
+        <h2>Always "Reddy"!</h2>
+      </header>
+      <main>
+        <section class="card">
+          <div class="container">
+            <div class="row">
+            ${addEmployeeCard(allEmployees)}
+            </div>
+          </div>
+      </main>
+    <body>
+  </html>`;
     
   fs.writeFile('./index.html', html, function(err) {
     if (err){
         console.log(err);
     }
   });
-
-
 }
+
+
+
 
 
 
@@ -185,13 +192,14 @@ function addEmployeeCard(allEmployeesArray){
     let employeeCard = ``;
     allEmployeesArray.forEach(employee => {
       employeeCard += `
-        <div class="card text-white bg-primary col">
-          <h2> ${employee.name} </h2>
+        <section class="card">
+          <h2> ${employee.getRole()} </h2>
           <ul>
-              <li> ${employee.getRole()} </li>
-              <li> ID#${employee.id} </li>
-              <li> ${employee.email} </li>
+              <li> ${employee.name} </li>
+              <li> Employee ID #${employee.id} </li>
               <li> ${roleInfo(employee)} </li>
+              <li> ${employee.email} </li>
+              
           </ul>
         </div>
       `
@@ -204,15 +212,11 @@ function addEmployeeCard(allEmployeesArray){
 
 function roleInfo(employee){
       if (employee.getRole() === "manager"){
-
         return employee.getOffice();
-        
       } else if (employee.getRole() === "engineer"){
-
         return employee.getGithub();
       } else {
-
-          return employee.getSchool;
+        return employee.getSchool;
         }
 }
 
