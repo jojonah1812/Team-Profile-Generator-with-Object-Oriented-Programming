@@ -69,7 +69,7 @@ function nextTeamMember() {
             const htmlPageContent = startHTML(answers);
             console.log(allEmployees);
             
-            fs.writeFile('index.html', htmlPageContent, (err) =>
+            fs.writeFile("index.html", htmlPageContent, (err) =>
              err ? console.log(err) : console.log('Success! You created the index.html!'));
         }
       })
@@ -172,6 +172,7 @@ function startHTML () {
             ${addEmployeeCard(allEmployees)}
             </div>
           </div>
+        </section>
       </main>
     <body>
   </html>`;
@@ -204,12 +205,12 @@ function addEmployeeCard(allEmployeesArray){
  }
 
 function roleInfo(employee){
-      if (employee.getRole() === "manager"){
+      if (employee.getRole() === "Manager"){
         return employee.getOffice();
-      } else if (employee.getRole() === "engineer"){
-        return employee.getGithub();
+      } else if (employee.getRole() === "Engineer"){
+        return employee.getGitHubUsername();
       } else {
-        return employee.getSchool;
+        return employee.getSchool();
         }
 }
 
