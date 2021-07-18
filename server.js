@@ -172,18 +172,15 @@ function startHTML() {
     </head>
 
     <body> 
-      <header class="main-header">
+      <header>
         <h1>Team Redding</h1>
         <h2>Always "Reddy"!</h2>
       </header>
-      <main>
       
-          <div class="container">
-            <div class="row">
+      <main class="row";>
+          
             ${addEmployeeCard(allEmployees)}
-            </div>
-          </div>
-
+          
       </main>
     <body>
   </html>`;
@@ -200,8 +197,11 @@ function addEmployeeCard(allEmployeesArray) {
   allEmployeesArray.forEach((employee) => {
     employeeCard += `
         <section class="card">
-          <h2> ${employee.getRole()} </h2>
-          <h2> ${employee.name} </h2>
+          <header class="cardHeader">
+            <h2> ${employee.getRole()} </h2>
+          </header>
+          
+          <h3> ${employee.name} </h3>
           <ul>
               <li> Employee ID #${employee.id} </li>
               <li> ${roleInfo(employee)} </li>
