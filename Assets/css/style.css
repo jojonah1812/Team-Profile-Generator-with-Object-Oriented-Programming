@@ -17,7 +17,7 @@ header {
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: baseline;
-  
+  font-size: 24px;
   max-height: 100%; 
   padding: 40px;
   
@@ -33,12 +33,10 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: baseline;
-
-
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-  /* margin-top: 3%; */
+  margin-top: 3%;
   /* max-width: 100%; */
 
 }
@@ -55,7 +53,8 @@ main {
   border-width: 1px;
   width:25%;
   word-wrap: break-word;
-  list-style-type: none;
+  background-color: rgb(238, 172, 172);
+  
 }
 
 .row {
@@ -69,6 +68,11 @@ main {
   color: #fff;
   
 }
+
+.empInfo {
+  list-style-type: none;
+}
+
 
 .card img {
   width:35%;
